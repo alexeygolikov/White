@@ -137,7 +137,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             {
                 WaitForProcess();
                 WaitForWindow();
-                HourGlassWait();
+                //HourGlassWait();
                 CustomWait();
             }
             catch (Exception e)

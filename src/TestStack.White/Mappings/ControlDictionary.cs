@@ -84,6 +84,7 @@ namespace White.Core.Mappings
             items.Add(ControlDictionaryItem.WinFormSecondary(typeof (Win32TreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof (WPFTreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.Win32Secondary(typeof (Win32TreeNode), ControlType.TreeItem));
+            items.Add(ControlDictionaryItem.SilverlightSecondary(typeof(WPFTreeNode), ControlType.TreeItem));
 
             items.Add(new ControlDictionaryItem(typeof(DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, false, false, Constants.WinFormFrameworkId, false));
             items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Custom, "DatePicker", true, false, false, Constants.WPFFrameworkId, false));
