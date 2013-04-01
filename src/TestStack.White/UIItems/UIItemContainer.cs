@@ -95,6 +95,28 @@ namespace White.Core.UIItems
         /// <returns>First items matching the criteria</returns>
         public virtual IUIItem Get(SearchCriteria searchCriteria)
         {
+            if (Enabled == false){
+                throw new Exception("Modal dialog or message is shown.");
+            }
+            return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
+        }
+
+        public virtual IUIItem GetWithinTimeout(SearchCriteria searchCriteria, TimeSpan timeout)
+        {
+            if (Enabled == false)
+            {
+                throw new Exception("Modal dialog or message is shown.");
+            }
+            return Get(searchCriteria, timeout);
+        }
+
+        /// <summary>
+        /// Finds UIItem which matches specified type and searchCriteria using the default BusyTimeout. Is used only within modal dialogs.
+        /// </summary>
+        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
+        /// <returns>First items matching the criteria</returns>
+        public virtual IUIItem GetWithinModalDialog(SearchCriteria searchCriteria)
+        {
             return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
         }
 
