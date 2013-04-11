@@ -28,6 +28,14 @@ namespace Reporting.Domain
             directory = CreateNewDirectory(subFlowName, archiveLocation, flowName);
         }
 
+        public SubFlow(string folderPath){
+            this.archiveLocation = folderPath;
+            string result = string.Format(@"{0}", folderPath);
+            if ( ! Directory.Exists(result)){
+                CreateNewDirectory("", archiveLocation, "");
+            }
+        }
+
         public virtual IList<SubFlowStep> FlowSteps
         {
             get { return flowSteps; }
@@ -76,6 +84,13 @@ namespace Reporting.Domain
             string thumbNailName = string.Format(@"{0}\thumbNails\{1}-{2}-tn.png", directory, typeName, currentFlowStepSnapShot);
             CaptureScreenTo(fileName, thumbNailName);
             return new ScreenShot(fileName.Replace(archiveLocation + @"\", string.Empty), thumbNailName.Replace(archiveLocation + @"\", string.Empty));
+        }
+
+        public ScreenShot TakeScreenShotExperimental(String name){
+            String screenshotName = string.Format(@"{0}\{1}.png", archiveLocation, name);
+            String thumbName = string.Format(@"{0}\thumbNails\{1}_thumb.png", archiveLocation, name);
+            CaptureScreenTo(screenshotName, thumbName);
+            return new ScreenShot(name + ".png", thumbName + "_thumb.png");
         }
 
         private static void CaptureScreenTo(string fileName, string thumbNailName)
