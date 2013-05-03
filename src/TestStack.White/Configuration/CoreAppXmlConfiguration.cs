@@ -18,7 +18,7 @@ namespace White.Core.Configuration
         static CoreAppXmlConfiguration()
         {
             DefaultValues.Add("BusyTimeout", 5000);
-            DefaultValues.Add("WaitBasedOnHourGlass", true);
+            DefaultValues.Add("WaitBasedOnHourGlass", false);
             DefaultValues.Add("WorkSessionLocation", ".");
             DefaultValues.Add("UIAutomationZeroWindowBugTimeout", 5000);
             DefaultValues.Add("PopupTimeout", 5000);
